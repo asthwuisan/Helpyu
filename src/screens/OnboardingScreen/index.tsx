@@ -21,7 +21,7 @@ const pages = [
   {
     title: 'Semua bantuan dalam genggamanmu',
     subtitle:
-      'Dari bersih-bersih rumah, servis motor, hingga tutor privat — semua ada di HelpYu!',
+      'Dari bersih-bersih rumah, servis motor, hingga tutor privat — semua tersedia di HelpYu!',
     imageUri: Image.resolveAssetSource(require('../assets/frame3.png')).uri,
     backgroundImage: require('../assets/background.png'),
   },
@@ -34,9 +34,8 @@ const pages = [
     backgroundImage: require('../assets/background.png'),
   },
   {
-    title: 'Ngobrol langsung, tanpa ribet',
-    subtitle:
-      ' Ketemu penyedia jasa yang cocok? Chat langsung dan atur semuanya dengan mudah!',
+    title: 'Screen 4',
+    subtitle: 'Screen 4',
     imageUri: Image.resolveAssetSource(require('../assets/frame5.png')).uri,
     backgroundImage: require('../assets/background.png'),
   },
