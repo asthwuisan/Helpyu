@@ -34,15 +34,15 @@ const pages = [
     backgroundImage: require('../assets/background.png'),
   },
   {
-    title: 'Semua bantuan dalam genggamanmu',
+    title: 'Ngobrol langsung, tanpa ribet',
     subtitle:
-      'Dari bersih-bersih rumah, servis motor, hingga tutor privat — semua ada di HelpYu!',
+      ' Ketemu penyedia jasa yang cocok? Chat langsung dan atur semuanya dengan mudah!',
     imageUri: Image.resolveAssetSource(require('../assets/frame5.png')).uri,
     backgroundImage: require('../assets/background.png'),
   },
   {
-    title: 'Page 2 header',
-    subtitle: 'This is page 2',
+    title: 'Screen 5',
+    subtitle: 'Screen 5',
     imageUri: Image.resolveAssetSource(require('../assets/frame6.png')).uri,
     backgroundImage: require('../assets/background.png'),
   },
