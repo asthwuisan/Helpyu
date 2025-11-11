@@ -6,9 +6,16 @@ import {
   ImageBackground,
   Dimensions,
 } from 'react-native';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { OnboardFlow } from 'react-native-onboard';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../App';
 
+type NavProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'OnboardingScreen'
+>;
 const { width, height } = Dimensions.get('window');
 
 const pages = [
@@ -49,33 +56,48 @@ const pages = [
 ];
 
 const OnboardingScreen = () => {
-  return (
-    <OnboardFlow
-      pages={pages}
-      type="fullscreen"
-      renderItem={({ title, subtitle, imageUri, currentIndex }) => {
-        const bg = pages[currentIndex].backgroundImage;
+  const navigation = useNavigation<NavProp>();
 
+  const handleOnDone = () => {
+    // Ganti layar saat ini dengan SignIn agar pengguna tidak bisa kembali ke onboarding
+    navigation.replace('SignIn');
+  };
+
+  // Menggunakan useMemo untuk menghindari pembuatan ulang fungsi renderItem yang berat
+  const memoizedRenderItem = useMemo(
+    () =>
+      ({ page }) => {
         return (
           <ImageBackground
-            source={bg}
+            source={page.backgroundImage}
             style={styles.container}
             resizeMode="cover"
           >
             <View style={styles.center}>
-              {imageUri && (
+              {page.imageUri && (
                 <Image
-                  source={{ uri: imageUri }}
+                  source={{ uri: page.imageUri }}
                   style={styles.image}
                   resizeMode="contain"
                 />
               )}
-              {title && <Text style={styles.title}>{title}</Text>}
-              {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
+              {page.title && <Text style={styles.title}>{page.title}</Text>}
+              {page.subtitle && (
+                <Text style={styles.subtitle}>{page.subtitle}</Text>
+              )}
             </View>
           </ImageBackground>
         );
-      }}
+      },
+    [],
+  );
+
+  return (
+    <OnboardFlow
+      pages={pages}
+      type="fullscreen"
+      onDone={handleOnDone}
+      renderItem={memoizedRenderItem}
     />
   );
 };
@@ -102,16 +124,15 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: 'Urbanist-ExtraBold',
     fontSize: 20,
-    fontWeight: '375',
-    fontHeight: '103',
-    color: 'white',
+    fontWeight: '800', // 'ExtraBold' is typically 800
+    color: '#FFFFFF',
     marginBottom: 8,
     textAlign: 'center',
   },
   subtitle: {
     fontFamily: 'Urbanist-Medium',
     fontSize: 14,
-    color: 'white',
+    color: '#FFFFFF',
     textAlign: 'center',
   },
 });

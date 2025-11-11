@@ -31,7 +31,7 @@ const HomePage = () => (
         />
       </View>
     </ScrollView>
-    <BottomNav />
+    <BottomNav active="Home" />
   </View>
 );
 
