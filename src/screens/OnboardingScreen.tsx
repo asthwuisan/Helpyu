@@ -26,9 +26,10 @@ const pages = [
     backgroundImage: require('../assets/background.png'),
   },
   {
-    title: 'Semua bantuan dalam genggamanmu',
+    title:
+      'Nggak perlu repot keliling, cukup ketik dan jasa terbaik langsung muncul!',
     subtitle:
-      'Dari bersih-bersih rumah, servis motor, hingga tutor privat — semua ada di HelpYu!',
+      'Cari berdasarkan kategori, lokasi, atau ulasan. Semua ada di satu tempat.',
     imageUri: Image.resolveAssetSource(require('../assets/frame4.png')).uri,
     backgroundImage: require('../assets/background.png'),
   },
