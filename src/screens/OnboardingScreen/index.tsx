@@ -21,20 +21,21 @@ const pages = [
   {
     title: 'Semua bantuan dalam genggamanmu',
     subtitle:
-      'Dari bersih-bersih rumah, servis motor, hingga tutor privat — semua ada di HelpYu!',
+      'Dari bersih-bersih rumah, servis motor, hingga tutor privat — semua tersedia di HelpYu!',
     imageUri: Image.resolveAssetSource(require('../assets/frame3.png')).uri,
     backgroundImage: require('../assets/background.png'),
   },
   {
-    title: 'Screen 3',
-    subtitle: 'Screen 3',
+    title:
+      'Nggak perlu repot keliling, cukup ketik dan jasa terbaik langsung muncul!',
+    subtitle:
+      'Cari berdasarkan kategori, lokasi, atau ulasan. Semua ada di satu tempat.',
     imageUri: Image.resolveAssetSource(require('../assets/frame4.png')).uri,
     backgroundImage: require('../assets/background.png'),
   },
   {
     title: 'Screen 4',
-    subtitle:
-      'Dari bersih-bersih rumah, servis motor, hingga tutor privat — semua ada di HelpYu!',
+    subtitle: 'Screen 4',
     imageUri: Image.resolveAssetSource(require('../assets/frame5.png')).uri,
     backgroundImage: require('../assets/background.png'),
   },
