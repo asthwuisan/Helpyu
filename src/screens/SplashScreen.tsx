@@ -1,8 +1,16 @@
 import { StyleSheet, Text, View, Image } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Logo from '../assets/logo.png';
 
-const SplashScreen = () => {
+const SplashScreen = ({ navigation }) => {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigation.replace('OnboardingScreen'); // Pindah otomatis
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <View style={styles.container}>
       <Image source={Logo} style={styles.logo} />
@@ -24,10 +32,5 @@ const styles = StyleSheet.create({
     height: 412,
     marginBottom: 12,
     resizeMode: 'contain',
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#333',
   },
 });

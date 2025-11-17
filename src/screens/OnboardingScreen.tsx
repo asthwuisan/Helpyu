@@ -1,78 +1,84 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ImageBackground,
-  Dimensions,
-} from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import React from 'react';
 import { OnboardFlow } from 'react-native-onboard';
 
-const { width, height } = Dimensions.get('window');
+const OnboardingScreen = ({ navigation }) => {
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      paddingHorizontal: 24,
+      backgroundColor: '#B6CF7B', // Added background color
+    },
+    image: {
+      width: 309,
+      height: 252,
+      marginBottom: 24,
+    },
+    title: {
+      fontSize: 20,
+      fontWeight: '800',
+      color: 'white', // Changed for better contrast
+      marginBottom: 16,
+      textAlign: 'center',
+    },
+    subtitle: {
+      fontSize: 14,
+      color: 'white', // Changed for better contrast
+      textAlign: 'center',
+      opacity: 0.8,
+    },
+  });
 
-const pages = [
-  {
-    imageUri: Image.resolveAssetSource(require('../assets/logo.png')).uri,
-    backgroundImage: require('../assets/background.png'),
-    title: 'Selamat Datang!',
-    subtitle: 'Satu sentuhan untuk menemukan bantuan terbaik di sekitarmu.',
-  },
-  {
-    title: 'Semua bantuan dalam genggamanmu',
-    subtitle:
-      'Dari bersih-bersih rumah, servis motor, hingga tutor privat — semua ada di HelpYu!',
-    imageUri: Image.resolveAssetSource(require('../assets/frame3.png')).uri,
-    backgroundImage: require('../assets/background.png'),
-  },
-  {
-    title: 'Semua bantuan dalam genggamanmu',
-    subtitle:
-      'Dari bersih-bersih rumah, servis motor, hingga tutor privat — semua ada di HelpYu!',
-    imageUri: Image.resolveAssetSource(require('../assets/frame4.png')).uri,
-    backgroundImage: require('../assets/background.png'),
-  },
-  {
-    title: 'Semua bantuan dalam genggamanmu',
-    subtitle:
-      'Dari bersih-bersih rumah, servis motor, hingga tutor privat — semua ada di HelpYu!',
-    imageUri: Image.resolveAssetSource(require('../assets/frame5.png')).uri,
-    backgroundImage: require('../assets/background.png'),
-  },
-  {
-    title: 'Page 2 header',
-    subtitle: 'This is page 2',
-    imageUri: Image.resolveAssetSource(require('../assets/frame6.png')).uri,
-    backgroundImage: require('../assets/background.png'),
-  },
-];
+  const pages = [
+    {
+      imageUri: Image.resolveAssetSource(require('../assets/logo.png')).uri,
+      title: 'Selamat Datang!',
+      subtitle: 'Satu sentuhan untuk menemukan bantuan terbaik di sekitarmu.',
+    },
+    {
+      title: 'Semua bantuan dalam genggamanmu',
+      subtitle:
+        'Dari bersih-bersih rumah, servis motor, hingga tutor privat — semua ada di HelpYu!',
+      imageUri: Image.resolveAssetSource(require('../assets/frame3.png')).uri,
+    },
+    {
+      title: 'Bantuan cepat dan mudah',
+      subtitle: 'Temukan jasa yang kamu butuhkan hanya dengan beberapa klik.',
+      imageUri: Image.resolveAssetSource(require('../assets/frame4.png')).uri,
+    },
+    {
+      title: 'Profesional terpercaya',
+      subtitle: 'Semua pekerja kami telah terverifikasi dan berkualitas.',
+      imageUri: Image.resolveAssetSource(require('../assets/frame5.png')).uri,
+    },
+    {
+      title: 'Mulai sekarang!',
+      subtitle: 'Temukan semua bantuan hanya dalam satu aplikasi.',
+      imageUri: Image.resolveAssetSource(require('../assets/frame6.png')).uri,
+    },
+  ];
 
-const OnboardingScreen = () => {
   return (
     <OnboardFlow
       pages={pages}
       type="fullscreen"
-      renderItem={({ title, subtitle, imageUri, currentIndex }) => {
-        const bg = pages[currentIndex].backgroundImage;
-
+      onDone={() => navigation.replace('SignInScreen')}
+      onSkip={() => navigation.replace('SignInScreen')}
+      renderItem={({ title, subtitle, imageUri }) => {
         return (
-          <ImageBackground
-            source={bg}
-            style={styles.container}
-            resizeMode="cover"
-          >
-            <View style={styles.center}>
-              {imageUri && (
-                <Image
-                  source={{ uri: imageUri }}
-                  style={styles.image}
-                  resizeMode="contain"
-                />
-              )}
-              {title && <Text style={styles.title}>{title}</Text>}
-              {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
-            </View>
-          </ImageBackground>
+          <View style={styles.container}>
+            {imageUri && (
+              <Image
+                source={{ uri: imageUri }}
+                style={styles.image}
+                resizeMode="contain"
+              />
+            )}
+            {title && <Text style={styles.title}>{title}</Text>}
+            {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
+          </View>
         );
       }}
     />
@@ -80,37 +86,3 @@ const OnboardingScreen = () => {
 };
 
 export default OnboardingScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width,
-    height,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  center: {
-    alignItems: 'center',
-    paddingHorizontal: 24,
-  },
-  image: {
-    width: 309,
-    height: 250,
-    marginBottom: 12,
-  },
-  title: {
-    fontFamily: 'Urbanist-ExtraBold',
-    fontSize: 20,
-    fontWeight: '375',
-    fontHeight: '103',
-    color: 'white',
-    marginBottom: 8,
-    textAlign: 'center',
-  },
-  subtitle: {
-    fontFamily: 'Urbanist-Medium',
-    fontSize: 14,
-    color: 'white',
-    textAlign: 'center',
-  },
-});
