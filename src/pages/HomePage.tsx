@@ -9,7 +9,7 @@ const HomePage = () => (
     <ScrollView>
       <Header title="Helpru" />
       <View style={styles.section}>
-        <Text style={styles.greeting}>Hai, Abhiefd 👋</Text>
+        <Text style={styles.greeting}>Hai, ZEA 👋</Text>
         <Text style={styles.subtitle}>Mau dibantu apa hari ini?</Text>
       </View>
 

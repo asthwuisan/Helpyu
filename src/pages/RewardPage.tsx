@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, View, Text, StyleSheet } from 'react-native';
+import { ScrollView, View, Text, StyleSheet, Alert } from 'react-native';
 import Header from '../molecules/Header';
 import BottomNav from '../molecules/BottomNav';
 
@@ -24,7 +24,7 @@ const RewardPage = () => (
         </Text>
       </View>
     </ScrollView>
-    <BottomNav />
+    <BottomNav active="Reward" />
   </View>
 );
 

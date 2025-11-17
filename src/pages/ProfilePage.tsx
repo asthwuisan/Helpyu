@@ -7,10 +7,10 @@ const ProfilePage = () => (
   <View style={styles.container}>
     <Header title="Profil" />
     <View style={styles.content}>
-      <Text style={styles.name}>Abhiefd</Text>
-      <Text style={styles.email}>abhiefd@example.com</Text>
+      <Text style={styles.name}>ZEAVANI</Text>
+      <Text style={styles.email}>Zavhany@gmail.com</Text>
     </View>
-    <BottomNav />
+    <BottomNav active="Profil" />
   </View>
 );
 

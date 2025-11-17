@@ -1,29 +1,41 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StatusBar } from 'react-native';
 
-interface HeaderProps {
-  title: string;
-}
+const Header = () => {
+  return (
+    <View
+      style={{
+        backgroundColor: '#FAFAFA',
+        elevation: 15,
+        paddingTop: 50,
+        paddingBottom: 15,
+      }}
+    >
+      <StatusBar barStyle="dark-content" backgroundColor="#FAFAFA" />
 
-const Header: React.FC<HeaderProps> = ({ title }) => (
-  <View style={styles.container}>
-    <Text style={styles.title}>{title}</Text>
-  </View>
-);
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          paddingHorizontal: 20,
+        }}
+      >
+        {/* Tombol Kembali */}
+        <TouchableOpacity>
+          <Text style={{ fontSize: 14, color: '#3B8ED1', marginLeft: 15 }}>
+            Kembali
+          </Text>
+        </TouchableOpacity>
+
+        {/* Judul */}
+        <View style={{ flex: 1, alignItems: 'center', marginLeft: -40 }}>
+          <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#202C60' }}>
+            Favorite
+          </Text>
+        </View>
+      </View>
+    </View>
+  );
+};
 
 export default Header;
-
-const styles = StyleSheet.create({
-  container: {
-    paddingVertical: 16,
-    backgroundColor: '#FFFFFF',
-    alignItems: 'center',
-    borderBottomWidth: 1,
-    borderColor: '#E0E0E0',
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#1E88E5',
-  },
-});

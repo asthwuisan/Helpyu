@@ -56,9 +56,12 @@ const BottomNav: React.FC<Props> = ({ active }) => {
         <TouchableOpacity
           key={tab.label}
           style={styles.item}
-          onPress={() =>
-            navigation.navigate(tab.screen as keyof RootStackParamList)
-          }
+          onPress={() => {
+            navigation.reset({
+              index: 0,
+              routes: [{ name: tab.screen as keyof RootStackParamList }],
+            });
+          }}
         >
           <Image
             // Pilih gambar berdasarkan status aktif
